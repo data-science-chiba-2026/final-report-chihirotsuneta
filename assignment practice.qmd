@@ -1,0 +1,38 @@
+
+---
+title: "TidyTuesday Practice"
+author: "Your Name"
+format: html
+---
+
+## Load Packages
+
+```{r}
+library(tidyverse)
+library(tidytuesdayR)
+```
+
+## Load Data
+
+```{r}
+tuesdata <- tt_load('2026-05-12')
+
+names(tuesdata)
+```
+
+## Select Dataset
+
+```{r}
+data <- tuesdata[[1]]
+
+glimpse(data)
+```
+
+## Simple Visualization
+
+```{r}
+data %>%
+  count() %>%
+  ggplot(aes(x = n, y = 1)) +
+  geom_point(size = 5)
+```
