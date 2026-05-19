@@ -1,0 +1,42 @@
+---
+title: "Sister Cities: Connections analysis"
+format: html
+---
+
+```{r}
+# Load packages
+suppressPackageStartupMessages({
+  library(tidyverse)
+  library(tidygraph)
+  library(ggraph)
+  library(knitr)
+})
+```
+
+## Prepare data
+
+```{r}
+# Run helper script (writes output/graph.rds)
+source('../analysis/sister_cities_analysis.R')
+
+graph <- readRDS('../output/graph.rds')
+nodes <- as_tibble(graph, what = 'nodes')
+edges <- as_tibble(graph, what = 'edges')
+```
+
+## Top cities by number of sister links
+
+```{r}
+nodes %>% arrange(desc(degree)) %>% slice_head(n = 20) %>% kable()
+```
+
+## Network plot
+
+```{r}
+set.seed(42)
+ggraph(graph, layout = 'fr') +
+  geom_edge_link(alpha = 0.4) +
+  geom_node_point(aes(size = degree), color = 'steelblue') +
+  geom_node_text(aes(label = name), repel = TRUE, size = 3) +
+  theme_void()
+```
