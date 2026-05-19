@@ -23,6 +23,13 @@ dev.off()
 top_tbl <- nodes %>% arrange(desc(degree)) %>% slice_head(n = 20)
 html_table <- knitr::kable(top_tbl, format = 'html', table.attr = 'class="table"')
 
+# compute degree summary
+degree2 <- sum(nodes$degree == 2, na.rm = TRUE)
+degree3 <- sum(nodes$degree == 3, na.rm = TRUE)
+degree_summary <- tibble(metric = c('degree_2','degree_3'), count = c(degree2, degree3))
+if(!dir.exists('output')) dir.create('output')
+readr::write_csv(degree_summary, 'output/degree_summary.csv')
+
 html <- paste0(
   "<html>\n<head><meta charset=\"utf-8\"><title>Sister Cities manual report</title></head>\n<body>\n",
   "<h1>Sister Cities: Connections</h1>\n",
@@ -32,7 +39,9 @@ html <- paste0(
   "<img src=\"network.png\" alt=\"network\" style=\"max-width:100%;height:auto;\"/>\n",
   "\n<h2>Degree distribution</h2>\n",
   "<img src=\"degree_distribution.png\" alt=\"degree distribution\" style=\"max-width:100%;height:auto;\"/>\n",
-  "\n<p>Download degree data: <a href=\"degree_distribution.csv\">degree_distribution.csv</a></p>\n",
+  "\n<h2>Degree summary</h2>\n",
+  "<p>Number of cities with degree 2: ", degree2, "<br/>Number of cities with degree 3: ", degree3, "</p>\n",
+  "\n<p>Download degree data: <a href=\"degree_distribution.csv\">degree_distribution.csv</a> and summary: <a href=\"degree_summary.csv\">degree_summary.csv</a></p>\n",
   "</body>\n</html>\n"
 )
 
