@@ -24,9 +24,10 @@ top_tbl <- nodes %>% arrange(desc(degree)) %>% slice_head(n = 20)
 html_table <- knitr::kable(top_tbl, format = 'html', table.attr = 'class="table"')
 
 # compute degree summary
+degree1 <- sum(nodes$degree == 1, na.rm = TRUE)
 degree2 <- sum(nodes$degree == 2, na.rm = TRUE)
 degree3 <- sum(nodes$degree == 3, na.rm = TRUE)
-degree_summary <- tibble(metric = c('degree_2','degree_3'), count = c(degree2, degree3))
+degree_summary <- tibble(metric = c('degree_1','degree_2','degree_3'), count = c(degree1, degree2, degree3))
 if(!dir.exists('output')) dir.create('output')
 readr::write_csv(degree_summary, 'output/degree_summary.csv')
 
