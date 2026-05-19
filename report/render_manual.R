@@ -30,6 +30,9 @@ html <- paste0(
   html_table,
   "\n<h2>Network plot</h2>\n",
   "<img src=\"network.png\" alt=\"network\" style=\"max-width:100%;height:auto;\"/>\n",
+  "\n<h2>Degree distribution</h2>\n",
+  "<img src=\"degree_distribution.png\" alt=\"degree distribution\" style=\"max-width:100%;height:auto;\"/>\n",
+  "\n<p>Download degree data: <a href=\"degree_distribution.csv\">degree_distribution.csv</a></p>\n",
   "</body>\n</html>\n"
 )
 
