@@ -2,4 +2,18 @@
 .Rhistory
 .RData
 .Ruserdata
-~$nal report_Chihiro Tsuneta.docx
+# temp Office files
+~$*
+# generic outputs
+*.output
+# project and R artifacts
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+output/
+*.png
+*.rds
+*.docx
+*.html
+.DS_Store
