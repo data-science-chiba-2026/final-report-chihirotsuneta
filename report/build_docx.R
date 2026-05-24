@@ -17,6 +17,8 @@ doc <- doc %>%
   body_add_par('Sister Cities: Connections', style = 'heading 1') %>%
   body_add_par('Top cities by degree', style = 'heading 2') %>%
   body_add_flextable(flextable(top20) %>% autofit()) %>%
+  body_add_par('Top 20 chart', style = 'heading 2') %>%
+  body_add_img(src = 'output/top20_degree.png', width = 6, height = 4) %>%
   body_add_par('Degree distribution', style = 'heading 2') %>%
   body_add_img(src = 'output/degree_distribution.png', width = 6, height = 4) %>%
   body_add_par('Network plot', style = 'heading 2') %>%
