@@ -8,10 +8,15 @@ suppressPackageStartupMessages({
 nodes <- readr::read_csv('output/nodes.csv', show_col_types = FALSE)
 smaller <- nodes %>% filter(degree <= 2)
 
-# Create improved bar plot for 'smaller'
-p <- ggplot(smaller, aes(x = factor(degree))) +
-  geom_bar(fill = 'steelblue') +
-  geom_text(stat = 'count', aes(label = ..count..), vjust = -0.5, size = 3) +
+# Create line plot for 'smaller'
+# compute counts by degree
+deg_df <- smaller %>% count(degree) %>% arrange(degree)
+
+p <- ggplot(deg_df, aes(x = degree, y = n)) +
+  geom_line(color = 'steelblue', size = 1) +
+  geom_point(color = 'steelblue', size = 2) +
+  geom_text(aes(label = n), vjust = -0.5, size = 3) +
+  scale_x_continuous(breaks = pretty(deg_df$degree)) +
   labs(x = 'Degree', y = 'Number of cities', title = 'Distribution of cities with degree <= 2') +
   theme_minimal() +
   theme(plot.title = element_text(hjust = 0.5))
