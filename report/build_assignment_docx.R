@@ -6,7 +6,8 @@ suppressPackageStartupMessages({
 
 # Load nodes
 nodes <- readr::read_csv('output/nodes.csv', show_col_types = FALSE)
-smaller <- nodes %>% filter(degree <= 2)
+# include cities with degree up to 3 as requested
+smaller <- nodes %>% filter(degree <= 3)
 
 # Create line plot for 'smaller'
 # compute counts by degree
