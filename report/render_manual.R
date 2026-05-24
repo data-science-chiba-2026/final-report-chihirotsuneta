@@ -40,9 +40,11 @@ html <- paste0(
   "<img src=\"network.png\" alt=\"network\" style=\"max-width:100%;height:auto;\"/>\n",
   "\n<h2>Degree distribution</h2>\n",
   "<img src=\"degree_distribution.png\" alt=\"degree distribution\" style=\"max-width:100%;height:auto;\"/>\n",
+  "\n<h2>Top 20 cities by degree</h2>\n",
+  "<img src=\"top20_degree.png\" alt=\"top20 degree\" style=\"max-width:100%;height:auto;\"/>\n",
   "\n<h2>Degree summary</h2>\n",
-  "<p>Number of cities with degree 2: ", degree2, "<br/>Number of cities with degree 3: ", degree3, "</p>\n",
-  "\n<p>Download degree data: <a href=\"degree_distribution.csv\">degree_distribution.csv</a> and summary: <a href=\"degree_summary.csv\">degree_summary.csv</a></p>\n",
+  "<p>Number of cities with degree 1: ", degree1, "<br/>Number of cities with degree 2: ", degree2, "<br/>Number of cities with degree 3: ", degree3, "</p>\n",
+  "\n<p>Download degree data: <a href=\"degree_distribution.csv\">degree_distribution.csv</a>, top20: <a href=\"top20_degree.csv\">top20_degree.csv</a>, and summary: <a href=\"degree_summary.csv\">degree_summary.csv</a></p>\n",
   "</body>\n</html>\n"
 )
 
