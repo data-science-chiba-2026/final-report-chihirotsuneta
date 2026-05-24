@@ -17,3 +17,6 @@ output/
 *.docx
 *.html
 .DS_Store
+analysis
+assignment practice_files
+assignment-practice_files/figure
