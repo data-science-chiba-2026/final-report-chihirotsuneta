@@ -1,9 +1,20 @@
-
 ---
 title: "Twinned Cities"
 author: "Chihiro Tsuneta"
+date: 2026-05-26
 format: docx
 ---
+
+These dataset are about *twinned cities (sister cities)* around the world. The data was collected from Wikipedia and includes information about the cities and their-sister city relationships. The analysis focuses on the degree of connections between cities, which is the number of sister-city links each other city has.
+
+The questions that we can answer through these graphs are
+
+1\) Which cities have the most sister-city connections?
+
+2\) How many cities have only one sister-city connections?
+
+3\) What is the distribution of cities by their degree of connections?
+
 ```{r}
 #| label: setup
 #| include: false
@@ -25,9 +36,7 @@ knitr::include_graphics('output/top20_degree.png')
 
 This bar chart ranks cities by their degree (number of sister-city links). Higher bars indicate cities connected to more sister cities. The table and figure help identify hubs in the sister-city network — cities that act as connectors to multiple partners.
 
-We have data about `r nrow(nodes)` cities.
-Only `r nrow(nodes %>% filter(degree > 2))` have more than 2 degrees with other cities.
-The distribution of the remainder is shown below:
+We have data about `r nrow(nodes)` cities. Only `r nrow(nodes %>% filter(degree > 2))` have 3 degrees with other cities. The distribution of the remainder is shown below:
 
 ```{r}
 #| label: plot-fewer-twinned-cities
