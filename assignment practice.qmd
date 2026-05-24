@@ -32,6 +32,6 @@ The distribution of the remainder is shown below:
 #| label: plot-fewer-twinned-cities
 #| echo: false
 
-smaller |>
-  ggplot(aes(x=degree))+geom_freqpoly(binwidth=1)
+# Use the pre-generated image for consistent rendering
+knitr::include_graphics('output/fewer_twinned.png')
 ```

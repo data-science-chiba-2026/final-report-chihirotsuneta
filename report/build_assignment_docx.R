@@ -8,15 +8,17 @@ suppressPackageStartupMessages({
 nodes <- readr::read_csv('output/nodes.csv', show_col_types = FALSE)
 smaller <- nodes %>% filter(degree <= 2)
 
-# Create freqpoly for 'smaller'
-p <- ggplot(smaller, aes(x = degree)) +
-  geom_histogram(binwidth = 1, fill = 'steelblue', color = 'white') +
+# Create improved bar plot for 'smaller'
+p <- ggplot(smaller, aes(x = factor(degree))) +
+  geom_bar(fill = 'steelblue') +
+  geom_text(stat = 'count', aes(label = ..count..), vjust = -0.5, size = 3) +
   labs(x = 'Degree', y = 'Number of cities', title = 'Distribution of cities with degree <= 2') +
-  theme_minimal()
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5))
 
 if(!dir.exists('output')) dir.create('output')
 
-ggsave('output/fewer_twinned.png', p, width = 8, height = 4, dpi = 150)
+ggsave('output/fewer_twinned.png', p, width = 6, height = 4, dpi = 150)
 
 # Build docx
 degree_gt2 <- nrow(nodes %>% filter(degree > 2))
