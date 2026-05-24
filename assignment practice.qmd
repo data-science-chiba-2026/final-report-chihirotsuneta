@@ -2,7 +2,7 @@
 ---
 title: "Twinned Cities"
 author: "Chihiro Tsuneta"
-format: html
+format: docx
 ---
 ```{r}
 #| label: setup
@@ -15,6 +15,14 @@ library(readr)
 nodes <- read_csv('output/nodes.csv', show_col_types = FALSE)
 smaller <- nodes %>% filter(degree <= 2)
 ```
+
+## Top 20 cities by degree
+
+```{r, echo=FALSE}
+# Show the top-20 bar chart generated earlier
+knitr::include_graphics('output/top20_degree.png')
+```
+
 
 We have data about `r nrow(nodes)` cities.
 Only `r nrow(nodes %>% filter(degree > 2))` have more than 2 degrees with other cities.
