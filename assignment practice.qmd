@@ -23,6 +23,7 @@ smaller <- nodes %>% filter(degree <= 2)
 knitr::include_graphics('output/top20_degree.png')
 ```
 
+This bar chart ranks cities by their degree (number of sister-city links). Higher bars indicate cities connected to more sister cities. The table and figure help identify hubs in the sister-city network — cities that act as connectors to multiple partners.
 
 We have data about `r nrow(nodes)` cities.
 Only `r nrow(nodes %>% filter(degree > 2))` have more than 2 degrees with other cities.
@@ -35,3 +36,5 @@ The distribution of the remainder is shown below:
 # Use the pre-generated image for consistent rendering
 knitr::include_graphics('output/fewer_twinned.png')
 ```
+
+The line plot shows the number of cities by degree (including degrees 1–3). Most cities have degree = 1 (single sister-city link). According to the analysis, the counts are: degree = 1: 10,854; degree = 2: 37; degree = 3: 4. These numbers indicate the network is largely composed of pairs, with only a few cities having multiple connections.
