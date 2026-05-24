@@ -1,38 +1,29 @@
 
 ---
-title: "TidyTuesday Practice"
-author: "Your Name"
+title: "Twinned Cities"
+author: "Chihiro Tsuneta"
 format: html
 ---
-
-## Load Packages
-
 ```{r}
+#| label: setup
+#| include: false
+
 library(tidyverse)
-library(tidytuesdayR)
+library(readr)
+
+# load nodes produced by analysis
+nodes <- read_csv('output/nodes.csv', show_col_types = FALSE)
+smaller <- nodes %>% filter(degree <= 2)
 ```
 
-## Load Data
+We have data about `r nrow(nodes)` cities.
+Only `r nrow(nodes %>% filter(degree > 2))` have more than 2 degrees with other cities.
+The distribution of the remainder is shown below:
 
 ```{r}
-tuesdata <- tt_load('2026-05-12')
+#| label: plot-fewer-twinned-cities
+#| echo: false
 
-names(tuesdata)
-```
-
-## Select Dataset
-
-```{r}
-data <- tuesdata[[1]]
-
-glimpse(data)
-```
-
-## Simple Visualization
-
-```{r}
-data %>%
-  count() %>%
-  ggplot(aes(x = n, y = 1)) +
-  geom_point(size = 5)
+smaller |>
+  ggplot(aes(x=degree))+geom_freqpoly(binwidth=1)
 ```
